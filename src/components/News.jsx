@@ -10,12 +10,13 @@ export class News extends Component {
             this.state = {
                     articles : [],
                     loading : false,
-                    page:1
+                    page:1,
+
             }
         }    
 
         async componentDidMount(){
-            let url = 'https://newsapi.org/v2/top-headlines?country=in&category=sport&apiKey=3ba5e7b3ba4e44c7b922ea03462be5d6&page=1&pageSize=20';
+            let url = 'https://newsapi.org/v2/top-headlines?country=in&category=sport&apiKey=3ba5e7b3ba4e44c7b922ea03462be5d6&page=1&pageSize=7';
             let data = await fetch(url);
             let result = await data.json();
             console.log(result);   
@@ -23,41 +24,41 @@ export class News extends Component {
             console.log('total',total_result);
 
             this.setState({
-                articles: result.articles
+                articles: result.articles,
+                totalArticles: total_result
             })
         }
 
         //handlePrevClick funciton
         handlePrevClick = async()=>{
 
-            let url = `https://newsapi.org/v2/top-headlines?country=in&category=sport&apiKey=3ba5e7b3ba4e44c7b922ea03462be5d6&page=${this.state.page-1}&pageSize=20`;
+            let url = `https://newsapi.org/v2/top-headlines?country=in&category=sport&apiKey=3ba5e7b3ba4e44c7b922ea03462be5d6&page=${this.state.page-1}&pageSize=7`;
             let data = await fetch(url);
             let result = await data.json();
-            console.log(result);
+           
             this.setState({
+                page: this.state.page-1,
                 articles: result.articles
-            })
-
-            console.log('prev')
-            this.setState({
-                page: this.state.page-1
             })
         }
         
         handleNextClick = async()=>{
+            console.log('Next')
 
-            let url = `https://newsapi.org/v2/top-headlines?country=in&category=sport&apiKey=3ba5e7b3ba4e44c7b922ea03462be5d6&page=${this.state.page-1}&pageSize=20`;
-            let data = await fetch(url);
-            let result = await data.json();
-            console.log(result);
-            this.setState({
-                articles: result.articles
-            })
+            if(this.state.page+1 > Math.ceil(this.state.totalArticles/7) ){
 
-            console.log('next')
-            this.setState({
-                page: this.state.page+1
-            })
+            }else{
+                let url = `https://newsapi.org/v2/top-headlines?country=in&category=sport&apiKey=3ba5e7b3ba4e44c7b922ea03462be5d6&page=${this.state.page-1}&pageSize=7`;
+                let data = await fetch(url);
+                let result = await data.json();
+               
+                this.setState({
+                    page: this.state.page+1,
+                    articles: result.articles
+                })
+            }
+
+
         }
 
 
