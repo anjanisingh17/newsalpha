@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/newsalpha/static/css/main.ffe34ec7.css",
+    "main.js": "/newsalpha/static/js/main.a35eaa19.js",
+    "index.html": "/newsalpha/index.html",
+    "main.ffe34ec7.css.map": "/newsalpha/static/css/main.ffe34ec7.css.map",
+    "main.a35eaa19.js.map": "/newsalpha/static/js/main.a35eaa19.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ffe34ec7.css",
+    "static/js/main.a35eaa19.js"
+  ]
+}
