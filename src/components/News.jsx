@@ -65,6 +65,7 @@ export class News extends Component {
   render() {
     return (
       <>
+      <h1>The News app</h1>
     <div className='container'>
      <div className='row'>  
 
